@@ -1,3 +1,4 @@
+
 var url = 'http://example.com/';
 
 function log(message){
@@ -10,3 +11,6 @@ function log(message){
 
 //This will just export the function
 module.exports = log;
+
+//Can also use
+// exports.log = log;
