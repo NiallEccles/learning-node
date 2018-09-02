@@ -10,11 +10,32 @@ module.exports = function(app, db){
                 res.send(item);
             }
         });
+    });
+    app.put('/notes/:id', (req, res)=>{
+        const id = req.params.id;
+        const details = {'_id': new ObjectID(id)};
+        const note =  { text: req.body.body, title: req.body.title }
+        db.db().collection('notes').updateOne(details , { $set: note  }, { upsert: true }, (err, item)=>{
+            if (err) res.send({ 'error': 'An error has occured' }), console.log(err)
+            else {
+                res.send(item);
+            }
+        });
+    });
+    app.delete('/notes/:id', (req, res)=>{
+        const id = req.params.id;
+        const details = {'_id': new ObjectID(id)};
+        db.db().collection('notes').deleteOne(details, (err, item)=>{
+            if (err) res.send({ 'error': 'An error has occured' });
+            else {
+                res.send(`Note ${id} deleted!`);
+            }
+        });
     })
     app.post('/notes', (req, res)=>{
         //Create note
-        const note =  { text: req.body.body, title: req.body.title }
-        db.db().collection('notes').insert(note, (err, result)=>{
+        const note =  { text: req.body.body, title: req.body.title };
+        db.db().collection('notes').insertOne(note, (err, result)=>{
             if (err) res.send({ 'error': 'An error has occured' });
             else {
                 res.send(result.ops[0]);
