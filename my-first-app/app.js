@@ -1,8 +1,8 @@
-//Usfule for when exporting an object
-// const logger  = require('./logger');
+var http = require('http');
 
-// logger.log('Hello World');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World!');
+}).listen(8080);
 
-const log = require('./logger');
-
-log('Hello World');
+console.log('Listening on port 8080');
