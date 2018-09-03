@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notes</title>
+</head>
+
+<body>
+    <h1></h1>
+    <p></p>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get('/notes/5b8bd0adb0b24809ec996e11')
+            .then(function (response) {
+                // handle success
+                console.log(response.data);
+                document.querySelector('h1').innerHTML = response.data.title;
+                document.querySelector('p').innerHTML = response.data.text;
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+    </script>
+</body>
+
+</html>
