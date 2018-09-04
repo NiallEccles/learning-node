@@ -9,16 +9,23 @@
 </head>
 
 <body>
-    <h1></h1>
-    <p></p>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        axios.get('/notes/5b8bd0adb0b24809ec996e11')
+        var body = document.querySelector('body');
+        var div = document.createElement('div');
+        var title = document.createElement('p');
+        var text = document.createElement('p');
+        axios.get('/notes/all')
             .then(function (response) {
                 // handle success
-                console.log(response.data);
-                document.querySelector('h1').innerHTML = response.data.title;
-                document.querySelector('p').innerHTML = response.data.text;
+                console.log(response.data.length);
+                for (var i = 0; i < response.data.length; i++) {
+                    console.log(response.data[i].title);
+                    title.innerHTML = response.data[i].title;
+                    text.innerHTML = response.data[i].text;
+                    body.appendChild(div);
+                    div.appendChild(title);
+                }
             })
             .catch(function (error) {
                 // handle error
