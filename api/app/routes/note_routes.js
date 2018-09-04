@@ -7,7 +7,7 @@ module.exports = function(app, db) {
   app.get("/", (req, res) => {
     res.sendFile("views/index.html", { root: path });
   });
-  app.get("/all", function(req, res) {
+  app.get("/notes/all", function(req, res) {
     db.db()
       .collection("notes")
       .find({})
