@@ -7,23 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Notes</title>
 </head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    section.section {
+        padding: 70px 35px;
+    }
+
+    section.section.section-green {
+        background: #36BA55;
+    }
+</style>
+<section id="notes" class="section section-green">
+    <h1>Test</h1>
+</section>
 
 <body>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        var body = document.querySelector('body');
-        var div = document.createElement('div');
-        var title = document.createElement('p');
-        var text = document.createElement('p');
         axios.get('/notes/all')
             .then(function (response) {
                 // handle success
                 console.log(response.data.length);
-                [...response.data].forEach((note)=>{
-                    body.appendChild(div);
-                    div.appendChild(title);
-                    title.innerHTML = note.title;
-                    text.innerHTML = note.text;
+                [...response.data].forEach((note) => {
+                    let title = note.title;
+                    console.log(document.querySelector('#notes').appendChild(title));
                 });
             })
             .catch(function (error) {
