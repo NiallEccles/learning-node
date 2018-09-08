@@ -19,13 +19,12 @@
             .then(function (response) {
                 // handle success
                 console.log(response.data.length);
-                for (var i = 0; i < response.data.length; i++) {
-                    console.log(response.data[i].title);
-                    title.innerHTML = response.data[i].title;
-                    text.innerHTML = response.data[i].text;
+                [...response.data].forEach((note)=>{
                     body.appendChild(div);
                     div.appendChild(title);
-                }
+                    title.innerHTML = note.title;
+                    text.innerHTML = note.text;
+                });
             })
             .catch(function (error) {
                 // handle error
