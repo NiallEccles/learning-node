@@ -21,7 +21,7 @@
     }
 </style>
 <section id="notes" class="section section-green">
-    <h1>Test</h1>
+    <h1 class="error"></h1>
 </section>
 
 <body>
@@ -39,6 +39,7 @@
             .catch(function (error) {
                 // handle error
                 console.log(error);
+                document.querySelector('#error').innerHTML =  error;
             })
             .then(function () {
                 // always executed
