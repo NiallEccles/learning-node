@@ -31,10 +31,10 @@
             .then(function (response) {
                 // handle success
                 console.log(response.data.length);
-                [...response.data].forEach((note) => {
-                    let title = note.title;
-                    console.log(document.querySelector('#notes').appendChild(title));
-                });
+                // [...response.data].forEach((note) => {
+                //     let title = note.title;
+                //     console.log(document.querySelector('#notes').appendChild(title));
+                // });
             })
             .catch(function (error) {
                 // handle error
